@@ -4,6 +4,6 @@ module "vpc" {
 }
 
 provider "aws" {
-  profile ="sandbox"
-  region = "us-east-1"
+  profile = "sandbox"
+  region  = "us-east-1"
 }

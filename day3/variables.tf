@@ -1,14 +1,14 @@
 variable "aws_region" {
-  type = string
-  default = "ap-southeast-1"  
+  type    = string
+  default = "ap-southeast-1"
 }
 
 variable "environment" {
-  type = string
+  type    = string
   default = "dev"
 }
 
 variable "business_divsion" {
-  type = string
+  type    = string
   default = "system"
 }

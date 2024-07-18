@@ -10,9 +10,9 @@ resource "aws_s3_bucket" "terraformstatebucket" {
 
 terraform {
   backend "s3" {
-    bucket         = "terraform-statebucket-ahk"
-    key            = "terraform.tfstate"
-    region         = "us-east-1" 
-    profile        = "sandbox"
+    bucket  = "terraform-statebucket-ahk"
+    key     = "terraform.tfstate"
+    region  = "us-east-1"
+    profile = "sandbox"
   }
 }
