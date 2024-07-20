@@ -21,7 +21,8 @@ resource "aws_route_table_association" "rtpublic" {
 
 
 
-#subnet association with 3 private subnets
+
+# subnet association with 1 private subnets
 resource "aws_route_table" "private_rt" {
   vpc_id = aws_vpc.sandboxahk_vpc.id
 
@@ -36,7 +37,14 @@ resource "aws_route_table" "private_rt" {
 }
 
 resource "aws_route_table_association" "private_rt_association" {
-  count         = length(aws_subnet.private)
-  subnet_id     = aws_subnet.private[count.index].id
+  subnet_id     = aws_subnet.private[0].id
   route_table_id = aws_route_table.private_rt.id
 }
+
+#subnet association with 3 private subnets
+
+# resource "aws_route_table_association" "private_rt_association" {
+#   count         = length(aws_subnet.private)
+#   subnet_id     = aws_subnet.private[count.index].id
+#   route_table_id = aws_route_table.private_rt.id
+# }
