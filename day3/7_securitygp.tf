@@ -1,6 +1,6 @@
 resource "aws_security_group" "bastion_sg" {
-  vpc_id = aws_vpc.sandboxahk_vpc.id
-  name   = "bastion_sg"
+  vpc_id      = aws_vpc.sandboxahk_vpc.id
+  name        = "bastion_sg"
   description = "Security group for bastion"
 
   ingress {
@@ -13,7 +13,7 @@ resource "aws_security_group" "bastion_sg" {
   egress {
     from_port   = 0
     to_port     = 0
-    protocol    = "-1" 
+    protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
     description = "Allow all outbound traffic"
   }
@@ -24,21 +24,21 @@ resource "aws_security_group" "bastion_sg" {
 }
 
 resource "aws_security_group" "private_instance_sg" {
-  vpc_id = aws_vpc.sandboxahk_vpc.id
-  name   = "private_instance_sg"
+  vpc_id      = aws_vpc.sandboxahk_vpc.id
+  name        = "private_instance_sg"
   description = "Security group for private instance"
 
   ingress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
+    from_port       = 22
+    to_port         = 22
+    protocol        = "tcp"
     security_groups = [aws_security_group.bastion_sg.id]
-    description = "Allow SSH access from bastion host"
+    description     = "Allow SSH access from bastion host"
   }
   egress {
     from_port   = 0
     to_port     = 0
-    protocol    = "-1" 
+    protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
     description = "Allow all outbound traffic"
   }
