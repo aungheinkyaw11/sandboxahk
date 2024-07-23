@@ -2,14 +2,14 @@
 resource "aws_vpc" "sandboxahk_vpc" {
   cidr_block = var.vpc_cidr
   tags = {
-    Name = "var.vpcname"
+    Name = "${var.vpcname}"
   }
 }
 
 #IGW
 resource "aws_internet_gateway" "sandbox_igw" {
   vpc_id = aws_vpc.sandboxahk_vpc.id
-  depends_on = [ aws_vpc.ahksandbox_vpc ]
+  depends_on = [ aws_vpc.sandboxahk_vpc ]
   tags = {
     Name = "${var.igw}"
   }
@@ -21,17 +21,13 @@ resource "aws_eip" "vpc_eip" {
   depends_on = [ aws_internet_gateway.sandbox_igw ]
 }
 
-resource "aws_eip" "ec2_eip" {
-  instance = aws_instance.sandbox_bastion.id
-
-}
 
 #NAT GW
 resource "aws_nat_gateway" "sandbox_natgw" {
   allocation_id = aws_eip.vpc_eip.id
   subnet_id     = aws_subnet.sandbox_public1.id
   tags = {
-    Name = "var.natgw-name"
+    Name = "${var.natgw-name}"
   }
 }
 
