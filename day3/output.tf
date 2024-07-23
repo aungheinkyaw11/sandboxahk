@@ -6,4 +6,4 @@ output "bastion_eip" {
 output "sandbox_private_ip" {
   description = "The private IP address of the sandbox host"
   value       = aws_instance.sandbox_private.private_ip
-}
+}        
