@@ -12,3 +12,13 @@ module "network" {
   availability_zone_b  = "us-east-1b"  
   natgw-name = "sandbox nat gw"
 }
+
+module "instances" {
+  source = "./Instances"
+  ami_id = "ami-0ad21ae1d0696ad58" 
+  instance_type = "t2.micro"
+  key_name = "ahk-sandbox"
+  private_instance_name = "private-instance"
+  bastion_host_name = "bastion_host"
+  vpcid = module.network.vpcid
+}

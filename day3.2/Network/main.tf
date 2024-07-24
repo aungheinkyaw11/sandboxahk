@@ -117,3 +117,4 @@ resource "aws_route_table_association" "rtprivate2" {
   subnet_id      = aws_subnet.sandbox_private2.id
   route_table_id = aws_route_table.private_routetable.id
 }
+
