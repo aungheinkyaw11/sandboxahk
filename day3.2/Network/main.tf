@@ -37,7 +37,7 @@ resource "aws_subnet" "sandbox_public1" {
   cidr_block        = var.public_subnet1_cidr
   availability_zone = var.availability_zone_a
   tags = {
-    Name = "sandbox_public1"
+    Name = "${var.vpcname}_public1"
   }
 }
 
@@ -46,7 +46,7 @@ resource "aws_subnet" "sandbox_public2" {
   cidr_block        = var.public_subnet2_cidr
   availability_zone = var.availability_zone_b
   tags = {
-    Name = "sandbox_public2"
+    Name = "${var.vpcname}_public2"
   }
 }
 
@@ -55,7 +55,7 @@ resource "aws_subnet" "sandbox_private1" {
   cidr_block        = var.private_subnet1_cidr
   availability_zone = var.availability_zone_a
   tags = {
-    Name = "sandbox_private1"
+    Name = "${var.vpcname}_private1"
   }
 }
 
@@ -64,7 +64,7 @@ resource "aws_subnet" "sandbox_private2" {
   cidr_block        = var.private_subnet2_cidr
   availability_zone = var.availability_zone_b
   tags = {
-    Name = "sandbox_private2"
+    Name = "${var.vpcname}_private2"
   }
 }
 
@@ -78,7 +78,7 @@ resource "aws_route_table" "pubic_routetable" {
   }
 
   tags = {
-    Name = "sandbox_public_rt"
+    Name = "${var.vpcname}_public_rt"
   }
 }
 
@@ -92,7 +92,7 @@ resource "aws_route_table" "private_routetable" {
   }
 
   tags = {
-    Name = "sandbox_private_rt"
+    Name = "${var.vpcname}_private_rt"
   }
 }
 

@@ -14,5 +14,14 @@ variable "bastion_host_name" {
 }
 
 variable "vpcid" {
+}
+
+variable "privatesubnet" {
+}
+
+variable "publicsubnet" {
+}
+
+variable "region" {
   
 }
