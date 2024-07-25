@@ -13,6 +13,10 @@ resource "aws_instance" "sandbox_bastion" {
   }
 }
 
+resource "aws_eip" "ec2_eip" {
+  instance = aws_instance.sandbox_bastion.id
+}
+
 resource "aws_instance" "sandbox_private" {
   ami             = var.ami_id
   instance_type   = var.instance_type
@@ -26,6 +30,8 @@ resource "aws_instance" "sandbox_private" {
     Name = "${var.private_instance_name}"
   }
 }
+
+
 
 resource "aws_security_group" "bastion_sg" {
   vpc_id      = var.vpcid
