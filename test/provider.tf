@@ -1,0 +1,13 @@
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "5.33.0"
+    }
+  }
+}
+
+provider "aws" {
+  profile = "sandbox"
+  region  = "ap-south-1"
+}
