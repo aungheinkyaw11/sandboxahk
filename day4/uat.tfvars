@@ -1,1 +1,1 @@
-instance_name = [ "uat-1", "uat-2", "uat-3" ]
+instance_name = ["uat-1", "uat-2", "uat-3"]
