@@ -62,7 +62,7 @@ module "instance-c" {
   key_name      = "80xg"
   instance_name = "Server-C"
   vpcid         = module.vpc3.vpc_id
-  publicsubnet  = module.vpc3.public_subnet_ids[1]
+  publicsubnet  = module.vpc3.public_subnet_ids[0]
   region        = "us-east-1"
 }
 
@@ -107,7 +107,7 @@ resource "aws_route" "vpcAC-rt" {
 
 resource "aws_route" "vpcB-rt" {
   route_table_id            = module.vpc2.public_route_table_id
-  destination_cidr_block    = "10.1.0.0/24"
+  destination_cidr_block    = "10.1.0.0/16"
   vpc_peering_connection_id = aws_vpc_peering_connection.vpc_peer_A_to_B.id
   depends_on = [
     aws_vpc_peering_connection.vpc_peer_A_to_B
@@ -116,7 +116,7 @@ resource "aws_route" "vpcB-rt" {
 
 resource "aws_route" "vpcC-rt" {
   route_table_id            = module.vpc3.public_route_table_id
-  destination_cidr_block    = "10.1.0.0/24"
+  destination_cidr_block    = "10.1.0.0/16"
   vpc_peering_connection_id = aws_vpc_peering_connection.vpc_peer_A_to_C.id
   depends_on = [
     aws_vpc_peering_connection.vpc_peer_A_to_C
