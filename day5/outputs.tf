@@ -57,3 +57,15 @@ output "vpc3_internet_gateway_id" {
 output "vpc3_nat_gateway_id" {
   value = module.vpc3.nat_gateway_id
 }
+
+# output "instance_id" {
+#   value = module.instances1.instance_id
+# }
+
+# output "instance_public_ip" {
+#   value = module.instances1.instance_public_ip  
+# }
+
+# output "instance_private_ip" {
+#   value = module.instances1.instance_private_ip
+# }
